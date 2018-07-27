@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Baseball Stats</h1>
+        <p class="lead">A Collection of up-to-date Baseball statistics</p>
+        <hr class="my-4">
+        <p></p>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">Players</span>
+            </div>
+            <input type="text" class="form-control" name="players" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <a class="btn btn-dark btn-lg" href="/" role="button">Search</a>
+      </div>
+      <a class="btn btn-success btn-lg" href="/hitters" role="button">Hitters</a>
+      <a class="btn btn-success btn-lg" href="/pitchers" role="button">Pitchers</a>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Current Rank</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">GP</th>
+            <th scope="col">BA</th>
+            <th scope="col">HR</th>
+            <th scope="col">RBI</th>
+            <th scope="col">SB</th>
+            <th scope="col">R</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in players %}
+          <tr>
+            <th scope="row">{{i.rank}}</th>
+            <td>{{i.first_name}}</td>
+            <td>{{i.last_name}}</td>
+            <td>{{i.games_played}}</td>
+            <td>{{i.batting_average}}</td>
+            <td>{{i.home_runs}}</td>
+            <td>{{i.runs_batted_in}}</td>
+            <td>{{i.stolen_bases}}</td>
+            <td>{{i.runs}}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <script>
+        $('#starts_with').keyup(function() {
+           console.log('sending the following information', $('#myForm').serialize());
+           $.ajax({
+              method: "POST",
+              url: "/players/api",
+              data: $('#myForm').serialize()
+           })
+           .done(function( response ) {
+              console.log('received response:', response);
+              $('#placeholder').html(response);
+           });
+        });
+     </script>
+</body>
+</html>
