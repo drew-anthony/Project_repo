@@ -28,41 +28,63 @@
         </div>
         <a class="btn btn-dark btn-lg" href="/" role="button">Search</a>
       </div>
-      <a class="btn btn-success btn-lg" href="/hitters" role="button">Hitters</a>
-      <a class="btn btn-success btn-lg" href="/pitchers" role="button">Pitchers</a>
+      <a class="btn btn-success btn-lg" href="/" role="button">A</a>
+      <a class="btn btn-success btn-lg" href="/B" role="button">B</a>
+      <a class="btn btn-success btn-lg" href="/C" role="button">C</a>
+      <a class="btn btn-success btn-lg" href="/D" role="button">D</a>
+      <a class="btn btn-success btn-lg" href="/E" role="button">E</a>
+      <a class="btn btn-success btn-lg" href="/F" role="button">F</a>
+      <a class="btn btn-success btn-lg" href="/G" role="button">G</a>
+      <a class="btn btn-success btn-lg" href="/H" role="button">H</a>
+      <a class="btn btn-success btn-lg" href="/I" role="button">I</a>
+      <a class="btn btn-success btn-lg" href="/J" role="button">J</a>
+      <a class="btn btn-success btn-lg" href="/K" role="button">K</a>
+      <a class="btn btn-success btn-lg" href="/L" role="button">L</a>
+      <a class="btn btn-success btn-lg" href="/M" role="button">M</a>
+      <a class="btn btn-success btn-lg" href="/N" role="button">N</a>
+      <a class="btn btn-success btn-lg" href="/O" role="button">O</a>
+      <a class="btn btn-success btn-lg" href="/P" role="button">P</a>
+      <a class="btn btn-success btn-lg" href="/Q" role="button">Q</a>
+      <a class="btn btn-success btn-lg" href="/R" role="button">R</a>
+      <a class="btn btn-success btn-lg" href="/S" role="button">S</a>
+      <a class="btn btn-success btn-lg" href="/T" role="button">T</a>
+      <a class="btn btn-success btn-lg" href="/U" role="button">U</a>
+      <a class="btn btn-success btn-lg" href="/V" role="button">V</a>
+      <a class="btn btn-success btn-lg" href="/W" role="button">W</a>
+      <a class="btn btn-success btn-lg" href="/X" role="button">X</a>
+      <a class="btn btn-success btn-lg" href="/Y" role="button">Y</a>
+      <a class="btn btn-success btn-lg" href="/Z" role="button">Z</a>
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Current Rank</th>
             <th scope="col">First</th>
             <th scope="col">Last</th>
-            <th scope="col">GP</th>
-            <th scope="col">BA</th>
-            <th scope="col">HR</th>
-            <th scope="col">RBI</th>
-            <th scope="col">SB</th>
-            <th scope="col">R</th>
+            <th scope="col">Postition</th>
+            <th scope="col">School</th>
+            <th scope="col">Birth Date</th>
+            <th scope="col">Years Pro</th>
+            <th scope="col">Handedness</th>
+            <th scope="col">Active</th>
           </tr>
         </thead>
         <tbody>
         {% for i in players %}
           <tr>
-            <th scope="row">{{i.rank}}</th>
             <td>{{i.first_name}}</td>
             <td>{{i.last_name}}</td>
-            <td>{{i.games_played}}</td>
-            <td>{{i.batting_average}}</td>
-            <td>{{i.home_runs}}</td>
-            <td>{{i.runs_batted_in}}</td>
-            <td>{{i.stolen_bases}}</td>
-            <td>{{i.runs}}</td>
+            <td>{{i.position_abbreviation}}</td>
+            <td>{{i.school}}</td>
+            <td>{{i.birth_date}}</td>
+            <td>{{i.years_of_experience}}</td>
+            <td>{{i.handedness}}</td>
+            <td>{{i.active}}</td>
           </tr>
         {% endfor %}
         </tbody>
       </table>
-      <div class="embed-responsive embed-responsive-16by9">
+      <!-- <div class="embed-responsive embed-responsive-16by9">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/PMbwIXdu30E" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-    </div>
+    </div> -->
       <script>
         $('#starts_with').keyup(function() {
            console.log('sending the following information', $('#myForm').serialize());

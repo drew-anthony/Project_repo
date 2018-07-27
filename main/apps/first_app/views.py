@@ -8,8 +8,23 @@ from stattlepy import Stattleship
 def index(request):
   New_query = Stattleship()
   Token = New_query.set_token('4d4437ec2f26e8f8a489979d0f528f11')
-  players = New_query.ss_get_results(sport='baseball',league='mlb', season_id='mlb-2017')
-  return render(request, 'index.html', {'players': players})
+  players = New_query.ss_get_results(sport="baseball",ep="players", league='mlb', season_id='mlb-2017', ) 
+  #print(players[0]) 
+  #print(type(players))
+  parsed_json = players.pop()
+  #print(parsed_json.get('players')[0].get('first_name'))
+  #print(type(parsed_json))
+
+  return render(request, 'index.html', {'players': parsed_json.get('players')})
+
+def b(request):
+  New_query = Stattleship()
+  Token = New_query.set_token('4d4437ec2f26e8f8a489979d0f528f11')
+  players = New_query.ss_get_results(sport="baseball",ep="players", league='mlb', season_id='mlb-2017', )
+  parsed_json = players.pop('b')
+
+  return render(request, 'index.html', {'players': parsed_json.get('players')})
+
 
 def hitter(request):
   return render(request,'index.html')
@@ -18,7 +33,6 @@ def pitchers(request):
   return render(request,'index.html')
 
 def users_api(request):
-    response = requests.get("https://api.stattleship.com/baseball/mlb/players_season_stats.json")
     # users = User.objects.filter(first_name__startswith=request.POST['starts_with'])
     return render(request, 'user_login/index.html')
 
